@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "810625635951",
+    "firebase_url": "https://loja-flutter-7fe51.firebaseio.com",
+    "project_id": "loja-flutter-7fe51",
+    "storage_bucket": "loja-flutter-7fe51.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810625635951:android:8a28688216f2e117189f9a",
+        "android_client_info": {
+          "package_name": "br.com.abbott.loja_virtual"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "810625635951-sk73babv70qh84pnrjhjsedu4oi0h23j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOPRa2uR36cXJiVUsf9e0elIL9BAHTEJA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "810625635951-sk73babv70qh84pnrjhjsedu4oi0h23j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
