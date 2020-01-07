@@ -11,6 +11,7 @@ class CategoryBloc extends BlocBase {
   final _titleController = BehaviorSubject<String>();
   final _imageController = BehaviorSubject();
   final _deleteController = BehaviorSubject<bool>();
+  final _loadingController = BehaviorSubject<int>();
 
 
   Stream<String> get outTitle => _titleController.stream.transform(
@@ -25,6 +26,7 @@ class CategoryBloc extends BlocBase {
   );
   Stream get outImage => _imageController.stream;
   Stream<bool> get outDelete => _deleteController.stream;
+  Stream<int> get outLoading => _loadingController.stream;
 
   Stream<bool> get submitValid => Observable.combineLatest2(outTitle, outImage, (a, b) => true);
 
@@ -60,10 +62,9 @@ class CategoryBloc extends BlocBase {
   }
 
   Future saveData() async {
+    _loadingController.add(1);
     if(image == null && category != null && title == category.data["title"]) return;
-
     Map<String, dynamic> dataToUpdate = {};
-
     if(image != null){
       StorageUploadTask task = FirebaseStorage.instance.ref().child("icons")
           .child(title).putFile(image);
@@ -78,8 +79,10 @@ class CategoryBloc extends BlocBase {
     if(category == null){
       await Firestore.instance.collection("products").document(title.toLowerCase())
           .setData(dataToUpdate);
+      _loadingController.add(2);
     } else {
       await category.reference.updateData(dataToUpdate);
+      _loadingController.add(2);
     }
 
   }
@@ -89,6 +92,7 @@ class CategoryBloc extends BlocBase {
     _titleController.close();
     _imageController.close();
     _deleteController.close();
+    _loadingController.close();
   }
 
 
